@@ -102,5 +102,23 @@ public class VectorOperations
         return true;
     }
 
+    /**
+     * maps rgb vector to grey scale value using formula Grayscale = 0.299 * Red + 0.587 * Green + 0.114 * Blue
+     * @param rgbVector rgbVector with three values
+     * @return corresponding greyscale value
+     */
+    public static double mapRGBVectorToGreyscale(double[] rgbVector)
+    {
+        if (rgbVector.length != 3)
+        {
+            throw new RuntimeException("illegal argument the length of the rgbVector should be 3");
+        }
+        else
+        {
+            return 0.299 * rgbVector[0] + 0.587 * rgbVector[1] + 0.114 * rgbVector[2];
+        }
+    }
+
+
 
 }

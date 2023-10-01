@@ -14,13 +14,6 @@
             <artifactId>JMathPlot</artifactId>
             <version>1.0.1</version>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
-        <dependency>
-            <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter-api</artifactId>
-            <version>5.9.0</version>
-            <scope>test</scope>
-        </dependency>
     </dependencies>
 <!--    <parent>...</parent>-->
 <!--    <dependencyManagement>...</dependencyManagement>-->
@@ -28,17 +21,20 @@
     <properties>
         <maven.compiler.source>21</maven.compiler.source>
         <maven.compiler.target>21</maven.compiler.target>
+
     </properties>
+
+
 
     <!-- Build Settings -->
 <!--    <build>...</build>-->
 <!--    <reporting>...</reporting>-->
 
     <!-- More Project Information -->
-    <name>...</name>
-    <description>...</description>
-    <url>...</url>
-    <inceptionYear>...</inceptionYear>
+<!--    <name>...</name>-->
+<!--    <description>...</description>-->
+<!--    <url>...</url>-->
+<!--    <inceptionYear>...</inceptionYear>-->
 <!--    <licenses>...</licenses>-->
 <!--    <organization>...</organization>-->
 <!--    <developers>...</developers>-->
