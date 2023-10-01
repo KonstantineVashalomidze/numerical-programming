@@ -9,7 +9,7 @@ import java.awt.*;
 import java.util.*;
 import java.util.List;
 
-public class Main
+public class ActivityPoint1
 {
     public static void main(String[] args)
     {
@@ -111,7 +111,60 @@ public class Main
         }
 
         // find two closest matrices using matrix norm
+        // store norms of the matrices into vector
+        double[] normsOfMatrices = new double[amountOfBalls];
+        for (int i = 0; i < amountOfBalls; i++)
+        {
+            normsOfMatrices[i] = MatrixOperations.calculateFirstNorm(matrices[i]);
+        }
 
+        // make of normsOfMatrices in order to find two closest number in it
+        double[] normsOfMatricesSortedClone = normsOfMatrices.clone();
+        Arrays.sort(normsOfMatricesSortedClone);
+
+        // variable that stores the two closest number as tuple
+        double[] closest = { normsOfMatricesSortedClone[0], normsOfMatricesSortedClone[1] };
+        // stores the absolute difference between values
+        double minimalDifferenceBetween = Math.abs(normsOfMatricesSortedClone[1] - normsOfMatricesSortedClone[0]);
+        for (int i = 1; i < amountOfBalls; i++)
+        {
+            double dif = Math.abs(normsOfMatricesSortedClone[i] - normsOfMatricesSortedClone[i - 1]);
+            if (minimalDifferenceBetween < dif)
+            {
+                minimalDifferenceBetween = dif;
+                closest[0] = normsOfMatricesSortedClone[i - 1];
+                closest[1] = normsOfMatricesSortedClone[i];
+            }
+        }
+
+        // represents figures with norms to connect because they are most similar
+        int[] closestNormIndexes = new int[2];
+        // this variable is for counting if the both of the values are found we should stop the loop
+        var countHowManyWasFound = 0;
+        // now find the indexes of that two number because they correlate to the norms - 1
+        for (int i = 0; i < amountOfBalls; i++)
+        {
+            if (countHowManyWasFound == 2)
+            {
+                break;
+            }
+
+            if (normsOfMatrices[i] == closest[0] || normsOfMatrices[i] == closest[1])
+            {
+                closestNormIndexes[countHowManyWasFound] = i;
+                countHowManyWasFound++;
+            }
+
+        }
+
+        var centersToConnect = new double[][]{ centerXYCoordinatesOfBalls[closestNormIndexes[0]],
+                                                centerXYCoordinatesOfBalls[closestNormIndexes[1]]} ;
+
+
+        // connect closest balls
+        plotter.drawLine("closest", Color.RED, centersToConnect,
+                new double[] { (centersToConnect[0][0] + centersToConnect[1][0]) / 2,
+                        (centersToConnect[0][1] + centersToConnect[1][1]) / 2 });
 
 
 

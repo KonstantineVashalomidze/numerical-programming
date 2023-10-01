@@ -4,6 +4,7 @@ import org.math.plot.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Arrays;
 
 public class Plotter
 {
@@ -27,6 +28,13 @@ public class Plotter
         plot.addScatterPlot(legend, color, xy);
         var lastElementIndex = xy.length - 1;
         plot.addLabel(legend, color,  centerCoordinateXY[0] + 2, centerCoordinateXY[1] + 2);
+    }
+
+    public void drawLine(String legend, Color color, double[][] xy, double[] centerCoordinateXY)
+    {
+        // draw line between two points
+        plot.addLinePlot(legend, xy[0], xy[1]);
+        plot.addLabel(legend, color, centerCoordinateXY);
     }
 
 

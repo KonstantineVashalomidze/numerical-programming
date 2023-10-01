@@ -5,6 +5,35 @@ public class MatrixOperations
 
 
 
+    public static double calculateFirstNorm(double[][] matrix)
+    {
+        if (matrix.length < 1)
+        {
+            return -1;
+        }
+
+        int numCols = matrix[0].length;
+
+        double maxColumnSum = Double.NEGATIVE_INFINITY;
+
+        for (int col = 0; col < numCols; col++)
+        {
+            double columnSum = 0.0;
+
+            for (double[] doubles : matrix)
+            {
+                columnSum += Math.abs(doubles[col]);
+            }
+
+            if (columnSum > maxColumnSum)
+            {
+                maxColumnSum = columnSum;
+            }
+        }
+
+        return maxColumnSum;
+    }
+
 
 
     public static String toStringMatrix(double[][] matrix)
