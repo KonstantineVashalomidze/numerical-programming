@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.numericall.algorithms.matrix_algorithms.MatrixOperations;
 import org.example.numericall.image.Image;
 
 import javax.swing.*;
@@ -11,7 +12,9 @@ public class ImageProcessing
 {
     public static void main(String[] args)
     {
-        /* example code of using Image class */
+        /*  */
+        /*
+         example code of using Image class
 
         File file = new File("src/main/resources/img.png");
         double[][][] rgbMatrix = Image.convertImageToMatrixRGB(file);
@@ -20,6 +23,15 @@ public class ImageProcessing
         BufferedImage greyscaleBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(grayscaleMatrix);
         Image.imageDisplay(greyscaleBufferedImage);
         Image.imageDisplay(bufferedImage);
+
+         */
+
+
+
+
+
+
+
 
 
     }
