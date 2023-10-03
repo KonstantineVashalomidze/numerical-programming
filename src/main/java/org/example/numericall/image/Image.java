@@ -228,6 +228,15 @@ public class Image
     }
 
 
+    /**
+     * detects where the edges are
+     * @param rgbImageMatrix matrix of which the edge detection should happen
+     * @return array of corresponding matrix with two values 1, 0; 1 if there is edge 0 if no edge is found
+     */
+    public static double[][][] detectedEdges(double rgbImageMatrix)
+    {
+        return null;
+    }
 
 
 

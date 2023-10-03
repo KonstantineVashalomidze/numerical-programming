@@ -1,4 +1,4 @@
-package org.example;
+package org.example.activiti_point;
 
 import org.example.numericall.algorithms.matrix_algorithms.MatrixOperations;
 import org.example.numericall.algorithms.norms.Norm;
@@ -170,3 +170,5 @@ public class ActivityPoint1
 
     }
 }
+
+
