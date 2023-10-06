@@ -14,7 +14,7 @@ public class SobelEdgeDetection
             {
                     new double[] { 0, -1, 0 },
                     new double[] { 0, 0,  0 },
-                    new double[] { 0, 1,  1 }
+                    new double[] { 0, 1,  0 }
             };
 
     @Override
@@ -63,7 +63,7 @@ public class SobelEdgeDetection
                             grayScaleImageMatrix[i + 1][j] * verticalKernelMatrix[2][1] +
                             grayScaleImageMatrix[i + 1][j + 1] * verticalKernelMatrix[2][2]
                         );
-                // computation of the gradient magnitude
+                // computation of the gradient
                 double gradientMagnitude = Math.sqrt(Math.pow(gx, 2) + Math.pow(gy, 2));
                 outputImage[i][j] = gradientMagnitude;
             }

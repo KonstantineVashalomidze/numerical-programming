@@ -24,10 +24,6 @@ public class TTF2
         BufferedImage bufferedImage = Image.convertRGBMatrixToBufferedImage(rgbMatrix);
         // convert the rgb matrix to grayscale matrix
         double[][] grayscaleMatrix = Image.convertRGBMatrixToGrayScaleMatrix(rgbMatrix);
-        // convert grayscale matrix to the image
-        BufferedImage greyscaleBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(grayscaleMatrix);
-        // display grayscale image
-        Image.imageDisplay(greyscaleBufferedImage);
         // display original image
         Image.imageDisplay(bufferedImage);
         // create edge detection algorithm
