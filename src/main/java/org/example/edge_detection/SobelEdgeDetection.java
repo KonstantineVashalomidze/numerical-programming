@@ -5,16 +5,16 @@ public class SobelEdgeDetection
 {
     private double[][] horizontalKernelMatrix =
             {
+                    new double[] { 0, 0, 0 },
                     new double[] { -1, 0, 1 },
-                    new double[] { -2, 0, 2 },
-                    new double[] { -1, 0, 1 }
+                    new double[] { 0, 0, 0 }
             };
 
     private double[][] verticalKernelMatrix =
             {
-                    new double[] { -1, -2, -1 },
-                    new double[] { 0, 0, 0 },
-                    new double[] { 1, 2, 1 }
+                    new double[] { 0, -1, 0 },
+                    new double[] { 0, 0,  0 },
+                    new double[] { 0, 1,  1 }
             };
 
     @Override

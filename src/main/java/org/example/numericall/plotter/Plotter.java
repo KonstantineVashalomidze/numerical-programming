@@ -65,4 +65,17 @@ public class Plotter
     }
 
 
+    /**
+     * draws line (x1, y1) - (x2, y2)
+     * @param legend text to appear on the line
+     * @param color color of line
+     * @param xy array of type [[x1, x2, x3...], [y1, y2, y3...]]
+     */
+    public void drawLine(String legend, Color color, double[][] xy)
+    {
+        // draw line between two points
+        plot.addLinePlot(legend, xy[0], xy[1]);
+    }
+
+
 }

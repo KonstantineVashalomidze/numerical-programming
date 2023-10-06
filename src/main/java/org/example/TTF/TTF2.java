@@ -1,4 +1,4 @@
-package org.example;
+package org.example.TTF;
 
 import org.example.edge_detection.EdgeDetectionStrategy;
 import org.example.edge_detection.SobelEdgeDetection;
@@ -7,37 +7,37 @@ import org.example.numericall.image.Image;
 import java.awt.image.BufferedImage;
 import java.io.File;
 
-public class ImageProcessing
+public class TTF2
 {
     public static void main(String[] args)
     {
 
-        File file = new File("src/main/resources/img.png");
-        double[][][] rgbMatrix = Image.convertImageToMatrixRGB(file);
-        BufferedImage bufferedImage = Image.convertRGBMatrixToBufferedImage(rgbMatrix);
-        double[][] grayscaleMatrix = Image.convertRGBMatrixToGrayScaleMatrix(rgbMatrix);
-        BufferedImage greyscaleBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(grayscaleMatrix);
-        Image.imageDisplay(greyscaleBufferedImage);
-        Image.imageDisplay(bufferedImage);
+        /*
+        * SEE THE FILE edge_detection SobelEdgeDectection for concrete implementation of edge detection algorithm
+        * */
 
+        // read input image
+        File file = new File("src/main/resources/img.png");
+        // create corresponding matrix of rgb image
+        double[][][] rgbMatrix = Image.convertImageToMatrixRGB(file);
+        // convert that rgb matrix to image to display it
+        BufferedImage bufferedImage = Image.convertRGBMatrixToBufferedImage(rgbMatrix);
+        // convert the rgb matrix to grayscale matrix
+        double[][] grayscaleMatrix = Image.convertRGBMatrixToGrayScaleMatrix(rgbMatrix);
+        // convert grayscale matrix to the image
+        BufferedImage greyscaleBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(grayscaleMatrix);
+        // display grayscale image
+        Image.imageDisplay(greyscaleBufferedImage);
+        // display original image
+        Image.imageDisplay(bufferedImage);
+        // create edge detection algorithm
         EdgeDetectionStrategy sobelEdgeDetectionAlgorithm = new SobelEdgeDetection();
+        // matrix after edge detection
         double[][] gradientMatrix = sobelEdgeDetectionAlgorithm.detectEdges(grayscaleMatrix);
+        // convert grayscale matrix to image
         BufferedImage gradientBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(gradientMatrix);
+        // display edge detected image
         Image.imageDisplay(gradientBufferedImage);
 
-
-
-
-
-
-
-
-
-
     }
-
-
-
-
-
 }
