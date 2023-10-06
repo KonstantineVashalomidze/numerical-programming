@@ -29,6 +29,7 @@ public class SobelEdgeDetection
 
         for (int i = 1; i < columnLength - 1; i++)
         {
+            // apply gx gy to the matrix
             for (int j = 1; j < rowLength - 1; j++)
             {
                 double gx = (
@@ -62,7 +63,7 @@ public class SobelEdgeDetection
                             grayScaleImageMatrix[i + 1][j] * verticalKernelMatrix[2][1] +
                             grayScaleImageMatrix[i + 1][j + 1] * verticalKernelMatrix[2][2]
                         );
-
+                // computation of the gradient magnitude
                 double gradientMagnitude = Math.sqrt(Math.pow(gx, 2) + Math.pow(gy, 2));
                 outputImage[i][j] = gradientMagnitude;
             }
