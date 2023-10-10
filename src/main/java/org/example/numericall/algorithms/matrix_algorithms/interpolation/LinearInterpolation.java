@@ -1,5 +1,10 @@
 package org.example.numericall.algorithms.matrix_algorithms.interpolation;
 
+/**
+ * Simple and computationally efficient.
+ * Connects two data points with a straight line.
+ * Suitable for data with a linear trend between points.
+ */
 public class LinearInterpolation
     implements InterpolationStrategy
 {
