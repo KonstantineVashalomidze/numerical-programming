@@ -12,7 +12,7 @@ public class ImageProcessing
     public static void main(String[] args)
     {
 
-        File file = new File("src/main/resources/img.png");
+        File file = new File("src/main/resources/img_1.png");
         double[][][] rgbMatrix = Image.convertImageToMatrixRGB(file);
         BufferedImage bufferedImage = Image.convertRGBMatrixToBufferedImage(rgbMatrix);
         double[][] grayscaleMatrix = Image.convertRGBMatrixToGrayScaleMatrix(rgbMatrix);

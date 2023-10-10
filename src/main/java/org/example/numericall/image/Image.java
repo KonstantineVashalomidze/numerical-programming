@@ -228,6 +228,8 @@ public class Image
     }
 
 
+
+
     /**
      * detects where the edges are
      * @param rgbImageMatrix matrix of which the edge detection should happen

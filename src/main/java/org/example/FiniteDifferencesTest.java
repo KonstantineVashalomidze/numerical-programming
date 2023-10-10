@@ -1,6 +1,8 @@
 package org.example;
 
 import org.example.numericall.algorithms.derivatives.FiniteDifference;
+import org.example.numericall.algorithms.matrix_algorithms.interpolation.InterpolationStrategy;
+import org.example.numericall.algorithms.matrix_algorithms.interpolation.LinearInterpolation;
 import org.example.numericall.functions.MathFunction;
 import org.example.numericall.plotter.Plotter;
 
@@ -34,8 +36,6 @@ public class FiniteDifferencesTest
         }
 
         plotter.drawLine("first derivative of parabola", Color.blue, new double[][] { x, derivativeOfParabolaY });
-
-
 
     }
 
