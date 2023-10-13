@@ -15,16 +15,6 @@ public class InterpolationTest
         double[][] dataPoints = { new double[] { 0, 1, 2, 3, 4, 5, 6 }, new double[] { 0, 0.8, 1, 0.2, -0.6, -0.9, -0.2 } };
         Plotter plotter = new Plotter();
 
-        // linear interpolation
-        InterpolationStrategy linearInterpolation = new LinearInterpolation(dataPoints);
-        System.out.println(linearInterpolation.interpolate(2.5));
-
-
-
-        // lagrange polynomial interpolation
-        InterpolationStrategy polynomialInterpolation = new LagrangePolynomialInterpolation(dataPoints);
-        System.out.println(polynomialInterpolation.interpolate(1.85));
-
         // Sample code of lagrange interpolation visual
         /*double[] x = new double[61];
         double[] y = new double[61];

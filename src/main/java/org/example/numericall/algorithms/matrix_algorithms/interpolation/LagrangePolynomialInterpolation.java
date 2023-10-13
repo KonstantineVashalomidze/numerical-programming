@@ -17,7 +17,7 @@ public class LagrangePolynomialInterpolation
     }
 
     @Override
-    public double interpolate(double x)
+    public double[] interpolate(double x)
     {
         double y = 0;
         int dataPointsLength = dataPoints[0].length;
@@ -26,7 +26,7 @@ public class LagrangePolynomialInterpolation
             y += dataPoints[1][i] * lix(i, x, dataPointsLength);
         }
 
-        return y;
+        return new double[] { y };
     }
 
     private double lix(int i, double x, int dataPointsLength)

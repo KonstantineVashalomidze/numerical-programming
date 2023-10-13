@@ -4,7 +4,7 @@ public interface InterpolationStrategy
 {
     /**
      * interpolates the function
-     * @return returns y at point x
+     * @return returns all y at point x
      */
-    double interpolate(double x);
+    double[] interpolate(double x);
 }
