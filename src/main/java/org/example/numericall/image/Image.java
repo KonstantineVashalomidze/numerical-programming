@@ -5,17 +5,12 @@ import org.example.numericall.algorithms.vector_algorithms.VectorOperations;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseMotionAdapter;
 import java.awt.image.BufferedImage;
-import java.awt.image.ColorModel;
-import java.awt.image.IndexColorModel;
-import java.awt.image.WritableRaster;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Hashtable;
 
 public class Image
 {

@@ -11,29 +11,29 @@ public class FiniteDifferencesTest
     public static void main(String[] args)
     {
         Plotter plotter = new Plotter();
-        MathFunction parabola = x -> x * x * x;
+        MathFunction function = x -> x * x * x * x * x * x * x * x;
 
-        double[] x = new double[200];
-        double[] y = new double[200];
+        double[] x = new double[100];
+        double[] y = new double[100];
 
-        for (int i = -100; i < 100; i++)
+        int index = 0;
+        for (double i = -0.5; i < 0.5; i += 0.01)
         {
-            x[i + 100] = i;
-            y[i + 100] = parabola.apply(i);
+            x[index] = i;
+            y[index] = FiniteDifference.derivativeOf(function, 3, 0.001).apply(i);
+            index++;
         }
 
+        plotter.drawPoints("Function", Color.RED, new double[][] { x, y });
 
-        plotter.drawLine("parabola", Color.RED, new double[][] { x, y });
 
-        double[] derivativeOfParabolaY = new double[200];
 
-        MathFunction function = FiniteDifference.firstDerivativeOf(parabola, 0.1);
-        for (int i = -100; i < 100; i++)
-        {
-            derivativeOfParabolaY[i + 100] = function.apply(i);
-        }
 
-        plotter.drawLine("first derivative of parabola", Color.blue, new double[][] { x, derivativeOfParabolaY });
+
+
+
+
+
 
     }
 

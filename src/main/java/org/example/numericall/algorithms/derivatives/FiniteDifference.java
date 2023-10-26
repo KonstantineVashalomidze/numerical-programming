@@ -4,16 +4,20 @@ import org.example.numericall.functions.MathFunction;
 
 public class FiniteDifference
 {
-    public static MathFunction firstDerivativeOf(MathFunction function, double hStepSize)
+    public static MathFunction derivativeOf(MathFunction function, int order, double hStepSize)
     {
-        MathFunction mathFunction = null;
-        for (; hStepSize > 0; hStepSize -= 0.01)
+        MathFunction derivative = null;
+        if (order == 1)
         {
-            double finalHStepSize = hStepSize;
-            mathFunction = x -> (function.apply(x + finalHStepSize) - function.apply(x - finalHStepSize)) / (2 * finalHStepSize);
+            derivative = x -> (function.apply(x + hStepSize) - function.apply(x - hStepSize)) / (2 * hStepSize);
+        }
+        else if (order > 1)
+        {
+            MathFunction previousDerivative = derivativeOf(function, order - 1, hStepSize);
+            derivative = x -> (previousDerivative.apply(x + hStepSize) - previousDerivative.apply(x - hStepSize)) / (2 * hStepSize);
 
         }
-        return mathFunction;
+        return derivative;
     }
 
 

@@ -1,6 +1,8 @@
 package org.example.numericall.algorithms.matrix_algorithms.interpolation;
 
 
+import org.example.numericall.functions.MathFunction;
+
 /**
  * Fits a polynomial curve through data points.
  * Higher-degree polynomials can capture more complex relationships.
@@ -14,7 +16,9 @@ public class LagrangePolynomialInterpolation
     public LagrangePolynomialInterpolation(double[][] dataPoints)
     {
         this.dataPoints = dataPoints;
+
     }
+
 
     @Override
     public double[] interpolate(double x)

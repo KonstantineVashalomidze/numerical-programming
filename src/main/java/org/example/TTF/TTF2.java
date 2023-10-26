@@ -1,7 +1,7 @@
 package org.example.TTF;
 
 import org.example.edge_detection.EdgeDetectionStrategy;
-import org.example.edge_detection.SobelEdgeDetection;
+import org.example.edge_detection.EdgeDetection;
 import org.example.numericall.image.Image;
 
 import java.awt.image.BufferedImage;
@@ -27,7 +27,7 @@ public class TTF2
         // display original image
         Image.imageDisplay(bufferedImage);
         // create edge detection algorithm
-        EdgeDetectionStrategy sobelEdgeDetectionAlgorithm = new SobelEdgeDetection();
+        EdgeDetectionStrategy sobelEdgeDetectionAlgorithm = new EdgeDetection();
         // matrix after edge detection
         double[][] gradientMatrix = sobelEdgeDetectionAlgorithm.detectEdges(grayscaleMatrix);
         // convert grayscale matrix to image

@@ -1,25 +1,68 @@
 package org.example.edge_detection;
 
-public class SobelEdgeDetection
+public class EdgeDetection
     implements EdgeDetectionStrategy
 {
     private double[][] horizontalKernelMatrix =
             {
-                    new double[] { 0, 0, 0 },
-                    new double[] { -1, 0, 1 },
-                    new double[] { 0, 0, 0 }
+                    new double[] { 1, 0, -1 },
+                    new double[] { 2, 0, -2 },
+                    new double[] { 1, 0, -1 }
             };
 
     private double[][] verticalKernelMatrix =
             {
-                    new double[] { 0, -1, 0 },
+                    new double[] { 1, 2, 1 },
                     new double[] { 0, 0,  0 },
-                    new double[] { 0, 1,  0 }
+                    new double[] { -1, -2, -1 }
             };
 
+
+    /**
+     * applies edge detection algorithm
+     * @param grayScaleImageMatrix grayscale image representation as matrix
+     * @param using who's kernel do we want to apply, Sobel, Prewitt, Scharr
+     * @return return the edge detected matrix
+     */
     @Override
-    public double[][] detectEdges(double[][] grayScaleImageMatrix)
+    public double[][] detectEdges(double[][] grayScaleImageMatrix, String using)
     {
+
+        if (using.equals("Prewitt"))
+        {
+            this.horizontalKernelMatrix = new double[][]
+                    {
+                            new double[] { -3, 0, 3 },
+                            new double[] { -10, 0, 10 },
+                            new double[] { -3, 0, 3 }
+                    };
+
+            this.verticalKernelMatrix = new double[][]
+                    {
+                            new double[] { -3, -10, -3 },
+                            new double[] { 0, 0,  0 },
+                            new double[] { 3, 10, 3 }
+                    };
+        }
+
+        if (using.equals("Scharr"))
+        {
+            this.horizontalKernelMatrix = new double[][]
+                    {
+                            new double[] { -1, 0, 1},
+                            new double[] { -1, 0, 1 },
+                            new double[] { -1, 0, 1}
+                    };
+
+            this.verticalKernelMatrix = new double[][]
+                    {
+                            new double[] { -1, -1, -1 },
+                            new double[] { 0, 0,  0 },
+                            new double[] { 1, 1, 1 }
+                    };
+        }
+
+
         if (grayScaleImageMatrix.length < 1)
             throw new IndexOutOfBoundsException();
 
@@ -71,5 +114,11 @@ public class SobelEdgeDetection
 
         return outputImage;
 
+    }
+
+    @Override
+    public double[][] detectEdges(double[][] grayScaleImageMatrix)
+    {
+        return detectEdges(grayScaleImageMatrix, "Sobel");
     }
 }
