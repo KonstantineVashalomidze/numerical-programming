@@ -21,9 +21,9 @@ public class LinearInterpolation
 
 
     @Override
-    public double[] interpolate(double x)
+    public double interpolate(double x)
     {
-        double[] y = new double[100]; // should be enough
+        double y = 0; // should be enough
         int length = dataPoints[0].length;
         int counter = 0;
         for (int i = 0; i < length - 1; i++)
@@ -35,8 +35,7 @@ public class LinearInterpolation
 
             if (x0 <= x && x1 >= x)
             {
-                y[counter] = (y0 * (x1 - x) + y1 * (x - x0)) / (x1 - x0);
-                counter++;
+                y = (y0 * (x1 - x) + y1 * (x - x0)) / (x1 - x0);
             }
         }
 

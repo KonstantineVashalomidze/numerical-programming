@@ -16,7 +16,7 @@ public class NewtonPolynomialInterpolation
     }
 
     @Override
-    public double[] interpolate(double x)
+    public double interpolate(double x)
     {
         double y = 0;
         int dataPointsLength = dataPoints[0].length;
@@ -32,7 +32,7 @@ public class NewtonPolynomialInterpolation
             y += term;
         }
 
-        return new double[]{y};
+        return y;
     }
 
     private double[] computeDividedDifferences(double[][] dataPoints)

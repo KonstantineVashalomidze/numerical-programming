@@ -26,12 +26,9 @@ public class TTF3
             for (double i = -20; i <= 20; i+=0.1)
             {
                 var polynomialInterpolationInterpolated = lagrangePolynomialInterpolation.interpolate(i);  // CHANGE THIS WITH newtonsInterpolation.interpolate(i) if you want to see newtons interpolation
-                for (int j = 0; j < polynomialInterpolationInterpolated.length; j++)
-                {
-                    x[counter] = i;
-                    y[counter] = polynomialInterpolationInterpolated[j];
-                    counter++;
-                }
+                x[counter] = i;
+                y[counter] = polynomialInterpolationInterpolated;
+                counter++;
             }
 
             plotter.drawPoints("interpolation", Color.GREEN, new double[][] { x, y });

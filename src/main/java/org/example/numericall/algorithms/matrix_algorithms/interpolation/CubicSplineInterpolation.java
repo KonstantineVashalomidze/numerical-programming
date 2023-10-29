@@ -20,7 +20,7 @@ public class CubicSplineInterpolation
 
 
     @Override
-    public double[] interpolate(double x)
+    public double interpolate(double x)
     {
         double[] h = new double[n - 1];
         for (int i = 0; i <= n - 2; i++)
@@ -79,7 +79,7 @@ public class CubicSplineInterpolation
             System.out.println(yData[i] + " " + b[i] + " " + c[i] + " " + d[i]);
         }
 
+        return -0.;
 
-        return null;
     }
 }

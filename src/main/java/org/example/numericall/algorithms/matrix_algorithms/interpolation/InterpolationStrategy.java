@@ -6,5 +6,5 @@ public interface InterpolationStrategy
      * interpolates the function
      * @return returns all y at point x
      */
-    double[] interpolate(double x);
+    double interpolate(double x);
 }

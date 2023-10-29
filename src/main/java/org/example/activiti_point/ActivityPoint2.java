@@ -1,7 +1,6 @@
 package org.example.activiti_point;
 
 import org.example.numericall.algorithms.matrix_algorithms.interpolation.InterpolationStrategy;
-import org.example.numericall.algorithms.matrix_algorithms.interpolation.LagrangePolynomialInterpolation;
 import org.example.numericall.algorithms.matrix_algorithms.interpolation.LinearInterpolation;
 
 import javax.swing.*;
@@ -81,7 +80,7 @@ class Window
             for (int j = (int) individualCurveFormatted[0][0]; j < individualCurveFormatted[0][individualCurveFormatted[0].length - 1]; j++)
             {
                 var resultOfInterpolationY = linearInterpolation.interpolate(j);
-                interpolatedIndividualCurve.add(new Point(j, (int) resultOfInterpolationY[0]));
+                interpolatedIndividualCurve.add(new Point(j, (int) resultOfInterpolationY));
             }
             interpolatedIndividualCurves.add(interpolatedIndividualCurve);
         }
