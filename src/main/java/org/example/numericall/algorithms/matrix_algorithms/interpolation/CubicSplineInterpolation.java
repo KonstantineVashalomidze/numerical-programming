@@ -22,64 +22,69 @@ public class CubicSplineInterpolation
     @Override
     public double interpolate(double x)
     {
-        double[] h = new double[n - 1];
-        for (int i = 0; i <= n - 2; i++)
+        double[] a = new double[n + 1];
+        for (int i = 0; i < n; i++)
+        {
+            a[i] = yData[i];
+        }
+
+        double[] b = new double[n], d = new double[n], h = new double[n];
+
+        for (int i = 0; i < n - 1; i++)
+        {
             h[i] = xData[i + 1] - xData[i];
-
-        double[] alpha = new double[n];
-        double[] beta = new double[n];
-
-        for (int i = 1; i <= n - 1; i++)
-        {
-            alpha[i + 1] = h[i] / (h[i] + h[i+1]);
-            beta[i+1] = 3 * ((1 - alpha[i+1]) / h[i]) * (yData[i+2] - yData[i+1]) - 3 * (alpha[i+1] / h[i+1]) * (yData[i+1] - yData[i]);
         }
 
-        double[] c = new double[n];
-        double[] l = new double[n];
-        double[] mu = new double[n];
-        double[] z = new double[n];
+        double[] alfa = new double[n];
 
-        for (int i = 0; i < n; i++)
+        for (int i = 1; i < n - 1; i++)
         {
-            c[i] = 0;
-            l[i] = 1;
-            mu[i] = 0;
-            z[i] = 0;
+            alfa[i] = (3 * (a[i + 1] - a[i])) / h[i] - (3 * (a[i] - a[i - 1]) / h[i - 1]);
         }
 
-        for (int i = 1; i <= n - 1; i++)
-        {
-            l[i] = 2 * (xData[i+1] - xData[i-1]) - h[i-1] * mu[i-1];
-            mu[i] = h[i] / l[i];
-            z[i] = (alpha[i] * (z[i-1] - h[i-1] * z[i-1]) - beta[i]) / l[i];
-        }
+        double[] c = new double[n + 1], l = new double[n + 1], u = new double[n + 1], z = new double[n + 1];
 
-        c[n - 1] = 0;
-        double[] b = new double[n];
-        double[] d = new double[n];
-        for (int i = 0; i < n; i++)
+        l[0] = 1;
+        u[0] = 0;
+        z[0] = 0;
+
+
+        for (int i = 1; i < n - 1; i++)
         {
-            b[i] = 0;
-            d[i] = 0;
+            l[i] = 2 * (xData[i + 1] - xData[i - 1]) - h[i - 1] * u[i - 1];
+            u[i] = h[i] / l[i];
+            z[i] = (alfa[i] - h[i - 1] * z[i - 1]) / l[i];
         }
 
 
-        for (int j = n - 2; j <= 0;)
-        {
-            c[j] = z[j] - mu[j] * c[j+1];
-            b[j] = (yData[j+1] - yData[j]) / h[j] - h[j] * (c[j+1] + 2 * c[j]) / 3;
-            d[j] = (c[j+1] - c[j]) / (3 * h[j]);
+        l[n] = 1;
+        z[n] = 0;
+        c[n] = 0;
 
-            j--;
+        for (int j = n - 1; j > 0; j--)
+        {
+            c[j] = z[j] - u[j] * c[j];
+            b[j] = (a[j + 1] - a[j]) / h[j] - (h[j] * (c[j + 1] + 2 * c[j])) / 3;
+            d[j] = (c[j + 1] - c[j]) / 3 * h[j];
         }
 
-        for (int i = 0; i < yData.length; i++)
+
+        double result = 0;
+        for (int i = 0; i < n - 1; i++)
         {
-            System.out.println(yData[i] + " " + b[i] + " " + c[i] + " " + d[i]);
+            if (x > xData[i] && x < xData[i + 1])
+            {
+                result = a[i] + b[i] * (x - xData[i]) + c[i] * Math.pow((x - xData[i]), 2) + d[i] * Math.pow((x - xData[i]), 3);
+            }
         }
 
-        return -0.;
+        return result;
+
+
+
+
+
+
 
     }
 }
