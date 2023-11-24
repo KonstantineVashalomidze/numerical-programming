@@ -103,7 +103,7 @@ public class VectorOperations
     }
 
     /**
-     * maps rgb vector to grey scale value using formula Grayscale = 0.299 * Red + 0.587 * Green + 0.114 * Blue
+     * maps rgb vector to grey scale value using formula Greyscale = 0.299 * Red + 0.587 * Green + 0.114 * Blue
      * @param rgbVector rgbVector with three values
      * @return corresponding greyscale value
      */
@@ -118,6 +118,10 @@ public class VectorOperations
             return 0.299 * rgbVector[0] + 0.587 * rgbVector[1] + 0.114 * rgbVector[2];
         }
     }
+
+
+
+
 
 
 

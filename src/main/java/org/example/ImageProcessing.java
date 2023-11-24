@@ -25,7 +25,11 @@ public class ImageProcessing
         BufferedImage gradientBufferedImage = Image.convertGrayscaleMatrixToBufferedImage(gradientMatrix);
         Image.imageDisplay(gradientBufferedImage);
 
+        BufferedImage zoomedBufferedImage = Image.convertRGBMatrixToBufferedImage(Image.zoomImage(rgbMatrix, 2, 100, 100));
+        Image.imageDisplay(zoomedBufferedImage);
 
+        BufferedImage scaldImage = Image.convertRGBMatrixToBufferedImage(Image.scaleImage(rgbMatrix, 0.5));
+        Image.imageDisplay(scaldImage);
 
 
 

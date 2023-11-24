@@ -1,26 +1,41 @@
 package org.example;
 
+import org.example.numericall.algorithms.matrix_algorithms.interpolation.InterpolationStrategy;
+import org.example.numericall.algorithms.matrix_algorithms.interpolation.LagrangePolynomialInterpolation;
+import org.example.numericall.algorithms.matrix_algorithms.interpolation.NewtonPolynomialInterpolation;
 import org.example.numericall.functions.MathFunction;
+import org.example.numericall.plotter.Plotter;
+
+import java.awt.*;
 
 public class test
 {
     public static void main(String[] args)
     {
-        System.out.println(gcd(18, 64));
-    }
+        double[][] dataPoints = new double[][] { new double[] { 3, 4, 5, 7 }, new double[] { 0, 2, 3, 3 } };
 
-    public static int gcd(int a, int b)
-    {
-        if (b == 0)
+        Plotter plotter = new Plotter();
+
+
+        InterpolationStrategy interpolationStrategy = new NewtonPolynomialInterpolation(dataPoints);
+        double[][] interpolatedDataPoints = new double[2][71];
+        int counter = 0;
+        for (double i = 0; i < 7; i += 0.1)
         {
-            return Math.abs(a);
+            interpolatedDataPoints[0][counter] = i;
+            interpolatedDataPoints[1][counter] = interpolationStrategy.interpolate(i);
+            counter++;
         }
 
-        else
-        {
-            return gcd(Math.abs(b), a % Math.abs(b));
-        }
+
+        plotter.drawPoints("legend", Color.GREEN, interpolatedDataPoints);
+
+
+
+
     }
+
+
 
 
 }

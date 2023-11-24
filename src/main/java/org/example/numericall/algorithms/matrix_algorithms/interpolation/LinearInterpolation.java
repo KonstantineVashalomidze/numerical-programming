@@ -25,7 +25,6 @@ public class LinearInterpolation
     {
         double y = 0; // should be enough
         int length = dataPoints[0].length;
-        int counter = 0;
         for (int i = 0; i < length - 1; i++)
         {
             double x0 = dataPoints[0][i];

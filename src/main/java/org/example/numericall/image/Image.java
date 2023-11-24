@@ -120,6 +120,36 @@ public class Image
     }
 
 
+    /**
+     * Zooms the image at a specified coordinate by a certain factor.
+     * @param imageMatrix The RGB matrix of the image
+     * @param zoomFactor The factor by which to zoom (greater than 1 for zooming in, less than 1 for zooming out)
+     * @param zoomCenterX The x-coordinate of the center of zoom
+     * @param zoomCenterY The y-coordinate of the center of zoom
+     * @return Zoomed RGB matrix
+     */
+    public static double[][][] zoomImage(double[][][] imageMatrix, double zoomFactor, int zoomCenterX, int zoomCenterY) {
+        int height = imageMatrix.length;
+        int width = imageMatrix[0].length;
+
+        int newHeight = (int) (height * zoomFactor);
+        int newWidth = (int) (width * zoomFactor);
+
+        double[][][] zoomedMatrix = new double[newHeight][newWidth][3];
+
+        for (int y = 0; y < newHeight; y++) {
+            for (int x = 0; x < newWidth; x++) {
+                int originalX = (int) ((x - zoomCenterX) / zoomFactor + zoomCenterX);
+                int originalY = (int) ((y - zoomCenterY) / zoomFactor + zoomCenterY);
+
+                if (originalX >= 0 && originalX < width && originalY >= 0 && originalY < height) {
+                    zoomedMatrix[y][x] = imageMatrix[originalY][originalX];
+                }
+            }
+        }
+
+        return zoomedMatrix;
+    }
 
 
     /**
@@ -222,6 +252,40 @@ public class Image
         frame.setVisible(true);
     }
 
+
+    /**
+     * Scales the image uniformly by a certain factor using Nearest Neighbor interpolation.
+     * @param imageMatrix The RGB matrix of the image
+     * @param scaleFactor The factor by which to scale the image (greater than 1 for scaling up, less than 1 for scaling down)
+     * @return Scaled RGB matrix
+     */
+    public static double[][][] scaleImage(double[][][] imageMatrix, double scaleFactor)
+    {
+        int originalHeight = imageMatrix.length;
+        int originalWidth = imageMatrix[0].length;
+
+        int newHeight = (int) (originalHeight * scaleFactor);
+        int newWidth = (int) (originalWidth * scaleFactor);
+
+        double[][][] scaledMatrix = new double[newHeight][newWidth][3];
+
+        for (int y = 0; y < newHeight; y++)
+        {
+            for (int x = 0; x < newWidth; x++)
+            {
+                int originalX = (int) (x / scaleFactor);
+                int originalY = (int) (y / scaleFactor);
+
+                // Make sure the coordinates are within bounds
+                originalX = Math.min(originalX, originalWidth - 1);
+                originalY = Math.min(originalY, originalHeight - 1);
+
+                scaledMatrix[y][x] = imageMatrix[originalY][originalX];
+            }
+        }
+
+        return scaledMatrix;
+    }
 
 
 

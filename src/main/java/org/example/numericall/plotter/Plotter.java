@@ -9,16 +9,36 @@ import java.util.Arrays;
 public class Plotter
 {
     // create your PlotPanel (you can use it as a JPanel)
-    Plot2DPanel plot = new Plot2DPanel();
+    Plot2DPanel plot;
     JFrame frame = new JFrame("a plot panel");
 
     public Plotter()
     {
+        plot = new Plot2DPanel();
+
         // put the PlotPanel in a JFrame, as a JPanel
         frame.setContentPane(plot);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBounds(20, 20, 1000, 800);
         frame.setVisible(true);
+    }
+
+
+    /**
+     * sets the bounds of the axis as desired
+     * @param axis 0 is x axis 1 is y axis
+     * @param min lower bound
+     * @param max upper bound
+     */
+    public void setAxisBounds(int axis, int min, int max)
+    {
+        plot.setFixedBounds(axis, min, max);
+    }
+
+    // repaints the window
+    public void repaint()
+    {
+        plot.repaint();
     }
 
     /**
@@ -46,7 +66,6 @@ public class Plotter
     {
         // add a line plot to the PlotPanel
         plot.addScatterPlot(legend, color, xy);
-        var lastElementIndex = xy.length - 1;
     }
 
 

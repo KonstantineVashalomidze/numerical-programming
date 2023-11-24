@@ -5,6 +5,7 @@ package org.example.numericall.algorithms.matrix_algorithms.interpolation;
  * Newton's interpolation is an alternative method for polynomial interpolation
  * it can be more computationally efficient than Lagrange interpolation in some cases
  */
+
 public class NewtonPolynomialInterpolation
         implements InterpolationStrategy
 {
@@ -15,42 +16,42 @@ public class NewtonPolynomialInterpolation
         this.dataPoints = dataPoints;
     }
 
+
+
+
+
+    private double[] calculateCoefficients(double[] x, double[] y)
+    {
+        int m = x.length;
+
+        double[] a = y.clone();
+
+        for (int k = 1; k < m; k++)
+        {
+            for (int i = m - 1; i >= k; i--)
+            {
+                a[i] = (a[i] - a[i - 1]) / (x[i] - x[i - k]);
+            }
+        }
+
+        return a;
+    }
+
     @Override
     public double interpolate(double x)
     {
-        double y = 0;
-        int dataPointsLength = dataPoints[0].length;
+        double[] a = calculateCoefficients(dataPoints[0], dataPoints[1]);
+        int n = dataPoints[0].length - 1;
+        double p = a[n];
 
-        double[] coefficients = computeDividedDifferences(dataPoints);
-
-        for (int i = 0; i < dataPointsLength; i++)
+        for (int k = 1; k <= n; k++)
         {
-            double term = coefficients[i];
-            for (int j = 0; j < i; j++) {
-                term *= (x - dataPoints[0][j]);
-            }
-            y += term;
+            p = a[n - k] + (x - dataPoints[0][n - k]) * p;
         }
 
-        return y;
+        return p;
     }
 
-    private double[] computeDividedDifferences(double[][] dataPoints)
-    {
-        int n = dataPoints[0].length;
-        double[] dividedDifferences = new double[n];
 
-        for (int i = 0; i < n; i++)
-        {
-            dividedDifferences[i] = dataPoints[1][i];
 
-            for (int j = i - 1; j >= 0; j--)
-            {
-                dividedDifferences[j] = (dividedDifferences[j + 1] - dividedDifferences[j])
-                        / (dataPoints[0][i] - dataPoints[0][j]);
-            }
-        }
-
-        return dividedDifferences;
-    }
 }

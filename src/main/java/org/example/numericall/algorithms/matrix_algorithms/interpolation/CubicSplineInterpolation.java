@@ -23,10 +23,7 @@ public class CubicSplineInterpolation
     public double interpolate(double x)
     {
         double[] a = new double[n + 1];
-        for (int i = 0; i < n; i++)
-        {
-            a[i] = yData[i];
-        }
+        if (n >= 0) System.arraycopy(yData, 0, a, 0, n);
 
         double[] b = new double[n], d = new double[n], h = new double[n];
 
